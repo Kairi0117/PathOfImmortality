@@ -2,10 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=frontend/index.html">
-    <title>Path of Immortality</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path of Immortality - Loading</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            color: #d4d4d4;
+            font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+            height: 100vh; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #loading-screen {
+            text-align: center;
+            animation: fade-in 1.5s ease;
+        }
+        .title-glow {
+            font-size: 52px;
+            color: #c9a84c;
+            text-shadow: 0 0 20px rgba(201, 168, 76, 0.5), 0 0 40px rgba(201, 168, 76, 0.3);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        .subtitle {
+            font-size: 20px; color: #888;
+            font-style: italic; margin-bottom: 40px;
+        }
+        .loader {
+            width: 40px; height: 40px;
+            margin: 0 auto 30px;
+            border: 3px solid #222;
+            border-top-color: #c9a84c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .loading-text {
+            font-size: 16px; color: #666;
+            font-style: italic;
+            animation: blink 1.5s step-end infinite;
+        }
+        .enter-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 14px 48px;
+            background: linear-gradient(135deg, #8b0000, #440000);
+            color: #c9a84c;
+            border: 1px solid #c9a84c;
+            font-family: inherit; font-size: 20px;
+            cursor: pointer; text-decoration: none;
+            letter-spacing: 4px; text-transform: uppercase;
+            transition: all 0.3s; opacity: 0;
+            animation: fade-in 1s ease 3s forwards;
+        }
+        .enter-link:hover {
+            background: linear-gradient(135deg, #cc3333, #8b0000);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+            transform: translateY(-2px);
+        }
+        @keyframes pulse-glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(201, 168, 76, 0.5), 0 0 40px rgba(201, 168, 76, 0.3); }
+            50% { text-shadow: 0 0 30px rgba(201, 168, 76, 0.7), 0 0 60px rgba(201, 168, 76, 0.4), 0 0 100px rgba(201, 168, 76, 0.2); }
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes blink { 50% { opacity: 0; } }
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+    <noscript><meta http-equiv="refresh" content="2; url=index.html"></noscript>
 </head>
 <body>
-    <p><a href="frontend/index.html">Enter the Path of Immortality</a></p>
+    <div id="loading-screen">
+        <h1 class="title-glow">Path of Immortality</h1>
+        <p class="subtitle">A Xianxia Tale</p>
+        <div class="loader"></div>
+        <p class="loading-text">Awakening the dao...</p>
+        <a class="enter-link" href="frontend/index.html">Enter the Path</a>
+    </div>
 </body>
 </html>

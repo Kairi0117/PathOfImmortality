@@ -36,10 +36,11 @@ body {
     height: 100vh;
     position: relative;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 1s ease;
 }
 
-#game-container.active { opacity: 1; }
+#game-container.active { opacity: 1; pointer-events: auto; }
 
 #particle-canvas {
     position: fixed; top: 0; left: 0;
