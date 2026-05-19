@@ -10,7 +10,7 @@ const { getEnemyById, DANGER_MAP } = require("./game_engine/enemies");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "..", "frontend")));
+app.use("/frontend", express.static(path.join(__dirname, "..", "frontend")));
 
 const gameState = { player: null, story: new StoryEngine(), world: new World(), combat: null };
 
@@ -22,7 +22,7 @@ function checkAlive(req, res, next) {
 }
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "frontend", "index.html"));
+    res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
 app.get("/api/backgrounds", (req, res) => {
