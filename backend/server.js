@@ -238,7 +238,11 @@ app.post("/api/transcend", checkAlive, (req, res) => {
     res.json({ ending, faction, player_stats: gameState.player.stats, game_over: true });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Path of Immortality server running on port ${PORT}`);
-});
+if (process.env.VERCEL !== "1") {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Path of Immortality server running on port ${PORT}`);
+    });
+}
+
+module.exports = app;
