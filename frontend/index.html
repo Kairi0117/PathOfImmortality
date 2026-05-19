@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path of Immortality - A Xianxia Tale</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="particle-canvas"></div>
+
+        <div id="sidebar-backdrop"></div>
+
+        <div id="sidebar">
+            <div id="character-panel">
+                <div id="char-name">Wanderer</div>
+                <div id="char-title">Mortal</div>
+                <div id="char-cultivation">Qi Condensation - Layer 1</div>
+                <div class="stat-bar">
+                    <label>Health</label>
+                    <div class="bar-bg"><div id="health-bar" class="bar-fill health" style="width:100%"></div></div>
+                    <span id="health-text">100/100</span>
+                </div>
+                <div class="stat-bar">
+                    <label>Qi</label>
+                    <div class="bar-bg"><div id="qi-bar" class="bar-fill qi" style="width:0%"></div></div>
+                    <span id="qi-text">0</span>
+                </div>
+                <div id="char-stats">
+                    <div><span>Talent:</span> <span id="stat-talent">Mortal</span></div>
+                    <div><span>Background:</span> <span id="stat-bg">Wanderer</span></div>
+                    <div><span>Gold:</span> <span id="stat-gold">10</span></div>
+                    <div><span>Reputation:</span> <span id="stat-rep">0</span></div>
+                </div>
+                <div id="equipment-box">
+                    <div class="section-title">Equipment</div>
+                    <div id="equipment-list">
+                        <div class="eq-slot" data-slot="weapon">Weapon: <span class="eq-name">-</span></div>
+                        <div class="eq-slot" data-slot="armor">Armor: <span class="eq-name">-</span></div>
+                        <div class="eq-slot" data-slot="accessory">Accessory: <span class="eq-name">-</span></div>
+                    </div>
+                    <div id="equipment-stats"></div>
+                </div>
+                <div id="inventory-box">
+                    <div class="section-title">Inventory</div>
+                    <div id="inventory-list">Empty</div>
+                </div>
+                <div id="quests-box">
+                    <div class="section-title">Quests</div>
+                    <div id="quests-list">None active</div>
+                </div>
+                <div id="techniques-box">
+                    <div class="section-title">Techniques</div>
+                    <div id="techniques-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-area">
+            <div id="location-banner">
+                <button id="sidebar-toggle" title="Toggle Menu">☰</button>
+                <span id="location-name">Cloud Wind Village</span>
+            </div>
+
+            <div id="story-area">
+                <div id="story-text"></div>
+            </div>
+
+            <div id="combat-area">
+                <div id="combat-enemy-panel">
+                    <div id="enemy-name">Enemy</div>
+                    <div id="enemy-tier">Tier</div>
+                    <div class="stat-bar">
+                        <label>HP</label>
+                        <div class="bar-bg"><div id="enemy-hp-bar" class="bar-fill enemy-hp" style="width:100%"></div></div>
+                        <span id="enemy-hp-text">100/100</span>
+                    </div>
+                    <div class="enemy-atk-def">
+                        <span>ATK: <span id="enemy-atk">0</span></span>
+                        <span>DEF: <span id="enemy-def">0</span></span>
+                    </div>
+                </div>
+                <div id="combat-log" class="combat-log"></div>
+                <div id="combat-actions" class="combat-actions"></div>
+            </div>
+
+            <div id="choices-area"></div>
+
+            <div id="action-bar">
+                <button class="action-btn" data-action="meditate">Meditate</button>
+                <button class="action-btn" data-action="breakthrough">Breakthrough</button>
+                <button class="action-btn transcend-btn" data-action="transcend">Transcend</button>
+            </div>
+            <div id="audio-controls">
+                <button id="mute-btn" title="Toggle Sound">♫</button>
+                <input type="range" id="volume-slider" min="0" max="100" value="30">
+                <div id="music-credit">Music: Pixabay (CC0) — Guzheng, Moonlit Whispers, Oriental Travel, Mo Li Hua, Chinese Oriental, Asian Percussion, Wuxia</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="start-screen">
+        <div id="start-content">
+            <h1 class="title-glow">Path of Immortality</h1>
+            <p class="subtitle">A Xianxia Tale</p>
+            <div id="new-game-form">
+                <input type="text" id="name-input" placeholder="Enter your name..." maxlength="20">
+                <div id="bg-selection">
+                    <div class="bg-option selected" data-bg="village_orphan">
+                        <div class="bg-name">Village Orphan</div>
+                        <div class="bg-desc">Humble beginnings, unyielding will</div>
+                    </div>
+                    <div class="bg-option" data-bg="fallen_clan_heir">
+                        <div class="bg-name">Fallen Clan Heir</div>
+                        <div class="bg-desc">Bloodline secret, vengeance sworn</div>
+                    </div>
+                    <div class="bg-option" data-bg="rogue_cultivator">
+                        <div class="bg-name">Rogue Cultivator</div>
+                        <div class="bg-desc">Cunning survivor, no master</div>
+                    </div>
+                    <div class="bg-option" data-bg="merchant_scion">
+                        <div class="bg-name">Merchant Scion</div>
+                        <div class="bg-desc">Wealth but no heritage</div>
+                    </div>
+                </div>
+                <button id="start-btn">Begin Your Journey</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="death-overlay">
+        <div id="death-content">
+            <div id="death-title">You Have Perished</div>
+            <div id="death-subtitle">Your journey on the path of immortality has ended...</div>
+            <div id="death-stats"></div>
+            <button id="death-restart-btn">Begin Again</button>
+        </div>
+    </div>
+
+    <div id="ending-overlay">
+        <div id="ending-content">
+            <div id="ending-title"></div>
+            <div id="ending-text"></div>
+            <div id="ending-stats"></div>
+            <div id="ending-faction"></div>
+            <button id="ending-restart-btn">Begin Again</button>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
